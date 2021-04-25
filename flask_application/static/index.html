@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Light to Bright Enhancer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./dropzone.min.css">
+    <link rel="stylesheet" href="./app.css">
+</head>
+
+<!-- <style>
+body {
+	background-image: url('/home/ubuntu/tf/templates/img_girl.jpg');
+}
+</style> -->
+
+<body>
+
+	<nav class="navbar navbar-light bg-light justify-content-center">
+        <a class="navbar-brand" href="#">Image Transformer Using GAN</a>
+    </nav>
+	
+	<div class="row">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-12 mx-auto">
+                        <form action="/" method="post" class="dropzone" id="dropzone">
+                            <div class="dz-message needsclick">
+                                <img src="./images/upload.png" width="50vw" height="50vw"><br>
+                                <span class="note needsclick">Drop files here or click to upload</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-3 mx-auto">
+                        <button id="submitBtn" type="button" class="btn btn-success">Classify</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-8 error" id="error" >
+                <p>Can't classify image. Classifier was not able to detect face and two eyes properly</p>    
+            </div>
+
+            <div class="col-sm-4" id="resultHolder">
+            </div> 
+        </div>
+			
+	<h2 align="Center"><font face="Lato" size="6">Select a file to upload</font></h2>
+	
+	<p align="Center">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+        Label: {{ messages[0] }}
+        Accuracy: {{ messages[1] }}
+	  {% endif %}
+	{% endwith %}
+	</p>
+<!-- 
+	<form align="center" method="post" action="/" enctype="multipart/form-data">
+		<dl>
+		<p align="center">
+			<input align="center" type="file" name="file" autocomplete="off" required>
+		</p>
+		</dl>
+		<p align="center">
+		<input align="center" type="submit" value="Submit">
+		</p>
+	</form> -->
+
+{% if filename %}
+	<div align="center" class="row">
+		<div class="column">
+			<h2><font face="Lato" size="6">Original Image</font></h2>
+			<img src="{{ url_for('display_o_image', filename=filename) }}">
+      		</div>
+		<div class="column">
+			<h2><font face="Lato" size="6">Enhanced Image</font></h2>
+			<img src="{{ url_for('display_image', filename=filename) }}">
+		</div>
+	</div>
+{% endif %}
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="./dropzone.min.js"></script>
+<script src="./app.js"></script>
+</html>
+
+
+

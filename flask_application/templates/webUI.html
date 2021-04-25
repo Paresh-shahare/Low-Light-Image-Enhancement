@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Light to Bright Enhancer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dropzone.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://codepen.io/P1N2O/pen/xxbjYqx.css'><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+	
+	<h6 class="text-light small font-weight-bold"><i class="fas fa-code"></i> Project  <i class="fas fa-heart"></i>       by Akshat Kunal Paresh Sanket Sagar</h6>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+	<!-- partial -->
+	<script  src="C:/Users/SPARK/Downloads/flask_files/static/script.js"></script>
+
+	<nav class="navbar navbar-light bg-light justify-content-center">
+        <a class="navbar-brand" href="#">Image Transformer Using GAN</a>
+    </nav>
+	
+	<form align="center" method="post" action="/" enctype="multipart/form-data">
+		<dl>
+		<p>
+			<img src="{{ url_for('static', filename='images/upload.png') }}" width="50vw" height="50vw"><br>
+			<input align="center" type="file" name="file" autocomplete="off" required>
+		</p>
+		</dl>
+		<p align="center">
+			<input align="right" button id="submitBtn" type="submit"  value="Transform" class="btn btn-success">
+		</p>
+	</form>
+
+
+{% if filename %}
+	<div align="center" class="row">
+		<div class="column">
+			<h2><font face="Lato" size="6">Original Image</font></h2>
+			<img src="{{ url_for('display_o_image', filename=filename) }}">
+      		</div>
+		<div class="column">
+			<h2><font face="Lato" size="6">Enhanced Image</font></h2>
+			<img src="{{ url_for('display_image', filename=filename) }}">
+		</div>
+	</div>
+{% endif %}
+
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="./dropzone.min.js"></script>
+<script src="./app.js"></script>
+</html>
+
+
